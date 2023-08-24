@@ -35,7 +35,7 @@ app.get('/:indexOfPlantsArray', (req, res)=>{
 })
 
 //route with 2 params
-//route goes through with 2 params, doesn't get caught by indexofplantsarray
+//route goes through with 2 params, doesn't get caught by indexofplantsarray, express makes distinction
 // app.get('/:firstName/:lastName', (req, res)=> {
 //     console.log(req.params)
 //     res.send(`Hello ${req.params.firstName} ${req.params.lastName}` )
@@ -44,10 +44,13 @@ app.get('/:indexOfPlantsArray', (req, res)=>{
 
 
 //query
+// http://localhost:3000/howdy/riyad?title=chief&year=2000
 app.get('/howdy/:firstName', (req,res)=>{
     console.log(req.params);
     console.log(req.query);
-    res.send(`Hello ${req.query.title} ${req.params.firstName} . The year is ${req.query.year}`)
+    let str = `Hello ${req.query.title} ${req.params.firstName} `
+    if (req.query.year){str+=  `The year is ${req.query.year}`}
+    res.send(str)
 })
 
 
