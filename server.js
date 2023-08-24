@@ -11,6 +11,9 @@ app.get('/', (req, res) =>{
 })
 
 
+//routes matched from top-bottom, specificity matters
+
+
 //return all plants
 app.get('/plants', (req, res) => {
     // res.send(plants)
@@ -21,7 +24,7 @@ app.get('/plants', (req, res) => {
 
 // return plant by index
 
-app.get('/plants/:indexOfPlantsArray', (req, res)=>{
+app.get('/:indexOfPlantsArray', (req, res)=>{
     // console.log(req.params);
     if (plants[req.params.indexOfPlantsArray]){
         res.send(plants[req.params.indexOfPlantsArray])
@@ -31,12 +34,21 @@ app.get('/plants/:indexOfPlantsArray', (req, res)=>{
     }
 })
 
+//route with 2 params
+//route goes through with 2 params, doesn't get caught by indexofplantsarray
+// app.get('/:firstName/:lastName', (req, res)=> {
+//     console.log(req.params)
+//     res.send(`Hello ${req.params.firstName} ${req.params.lastName}` )
+// })
 
-app.get('/hello/:firstname/:lastname', (req, res)=> {
-    console.log(req.params)
-    res.send(`Hello ${req.params.firstname} ${req.params.lastname}` )
+
+
+//query
+app.get('/howdy/:firstName', (req,res)=>{
+    console.log(req.params);
+    console.log(req.query);
+    res.send(`Hello ${req.query.title} ${req.params.firstName}`)
 })
-
 
 
 app.listen(PORT, ()=>{
