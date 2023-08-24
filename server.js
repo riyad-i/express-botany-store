@@ -22,7 +22,7 @@ app.get('/plants', (req, res) => {
 // return plant by index
 
 app.get('/plants/:indexOfPlantsArray', (req, res)=>{
-    // console.log(plants[req.params.indexOfPlantsArray]);
+    // console.log(req.params);
     if (plants[req.params.indexOfPlantsArray]){
         res.send(plants[req.params.indexOfPlantsArray])
     }
@@ -30,6 +30,13 @@ app.get('/plants/:indexOfPlantsArray', (req, res)=>{
         res.status(404).send(`No item at index ` + req.params.indexOfPlantsArray)
     }
 })
+
+
+app.get('/hello/:firstname/:lastname', (req, res)=> {
+    console.log(req.params)
+    res.send(`Hello ${req.params.firstname} ${req.params.lastname}` )
+})
+
 
 
 app.listen(PORT, ()=>{
