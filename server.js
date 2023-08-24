@@ -21,9 +21,14 @@ app.get('/plants', (req, res) => {
 
 // return plant by index
 
-app.get('/:indexOfPlantsArray', (req, res)=>{
-    console.log(plants[req.params.indexOfPlantsArray]);
-    res.send(plants[req.params.indexOfPlantsArray])
+app.get('/plants/:indexOfPlantsArray', (req, res)=>{
+    // console.log(plants[req.params.indexOfPlantsArray]);
+    if (plants[req.params.indexOfPlantsArray]){
+        res.send(plants[req.params.indexOfPlantsArray])
+    }
+    else {
+        res.status(404).send(`No item at index ` + req.params.indexOfPlantsArray)
+    }
 })
 
 
