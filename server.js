@@ -11,12 +11,20 @@ app.get('/', (req, res) =>{
 })
 
 
+//return all plants
 app.get('/plants', (req, res) => {
     // res.send(plants)
     res.status(200).json({products : plants , category: 'Botany'})
 })
 
 
+
+// return plant by index
+
+app.get('/:indexOfPlantsArray', (req, res)=>{
+    console.log(plants[req.params.indexOfPlantsArray]);
+    res.send(plants[req.params.indexOfPlantsArray])
+})
 
 
 app.listen(PORT, ()=>{
