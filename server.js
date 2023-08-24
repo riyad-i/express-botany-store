@@ -47,7 +47,7 @@ app.get('/:indexOfPlantsArray', (req, res)=>{
 app.get('/howdy/:firstName', (req,res)=>{
     console.log(req.params);
     console.log(req.query);
-    res.send(`Hello ${req.query.title} ${req.params.firstName}`)
+    res.send(`Hello ${req.query.title} ${req.params.firstName} . The year is ${req.query.year}`)
 })
 
 
